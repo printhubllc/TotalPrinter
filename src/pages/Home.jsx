@@ -2,8 +2,11 @@ import { Fragment } from "react";
 import Wrapper from "../components/wrapper/Wrapper";
 import Section from "../components/Section";
 import { products, discoutProducts } from "../utils/products";
-import SliderHome from "../components/Slider";
+
 import useWindowScrollToTop from "../hooks/useWindowScrollToTop";
+import SupportHome from "../components/Main";
+import Footer from "../components/Footer/Footer";
+import Navbar from "../components/Navbar/Navbar";
 
 const Home = () => {
   const newArrivalData = products.filter(
@@ -13,7 +16,9 @@ const Home = () => {
   useWindowScrollToTop();
   return (
     <Fragment>
-      <SliderHome />
+      <Navbar />
+     
+      <SupportHome />
       <Wrapper />
       <Section
         title="Big Discount"
@@ -26,6 +31,7 @@ const Home = () => {
         productItems={newArrivalData}
       />
       <Section title="Best Sales" bgColor="#f6f9fc" productItems={bestSales} />
+      <Footer />
     </Fragment>
   );
 };

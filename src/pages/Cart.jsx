@@ -1,6 +1,7 @@
-import { useEffect } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { Col, Container, Row, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   addToCart,
   decreaseQty,
@@ -10,11 +11,12 @@ import {
 const Cart = () => {
   const { cartList } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  // middlware to localStorage
+
   const totalPrice = cartList.reduce(
     (price, item) => price + item.qty * item.price,
     0
   );
+
   useEffect(() => {
     window.scrollTo(0, 0);
     // if(CartItem.length ===0) {
@@ -22,6 +24,7 @@ const Cart = () => {
     //   setCartItem(JSON.parse(storedCart));
     // }
   }, []);
+
   return (
     <section className="cart-items">
       <Container>
@@ -79,10 +82,19 @@ const Cart = () => {
           <Col md={4}>
             <div className="cart-total">
               <h2>Cart Summary</h2>
-              <div className=" d_flex">
+              <div className="d_flex">
                 <h4>Total Price :</h4>
                 <h3>${totalPrice}.00</h3>
               </div>
+              <Link to="/checkout">
+                <Button
+                  variant="primary"
+                  className="w-100 mt-3"
+                  disabled={cartList.length === 0}
+                >
+                  Proceed to Checkout
+                </Button>
+              </Link>
             </div>
           </Col>
         </Row>

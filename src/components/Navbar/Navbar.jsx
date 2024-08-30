@@ -3,6 +3,8 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Printer } from "lucide-react";
+
 const NavBar = () => {
   const { cartList } = useSelector((state) => state.cart);
   const [expand, setExpand] = useState(false);
@@ -30,8 +32,8 @@ const NavBar = () => {
     >
       <Container className="navbar-container">
         <Navbar.Brand to="/">
-          <ion-icon name="bag"></ion-icon>
-          <h1 className="logo">Multimart</h1>
+          <Printer size={32} className="me-2" />
+          <h1 className="logo">Digi Print</h1>
         </Navbar.Brand>
         {/* Media cart and toggle */}
         <div className="d-flex">
@@ -106,7 +108,7 @@ const NavBar = () => {
                 to="/cart"
                 onClick={() => setExpand(false)}
               >
-                <span className="nav-link-label">Cart</span>
+                <span className="nav-link-label">Contact</span>
               </Link>
             </Nav.Item>
             <Nav.Item className="expanded-cart">
